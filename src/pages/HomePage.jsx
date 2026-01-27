@@ -38,7 +38,7 @@ export default function HomePage() {
         
         <div className={`text-center z-10 px-6 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <h1 className="text-6xl md:text-8xl font-bold mb-4 text-white tracking-tight animate-slideUp">
-            {SITE_NAME}
+            {SITE_NAME} yassine merkada
           </h1>
           
           <p 
