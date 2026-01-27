@@ -5,10 +5,12 @@ import ProductPage from './pages/ProductPage';
 import './App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('product');
+  const [currentPage, setCurrentPage] = useState('home');
+  const [currentProductId, setCurrentProductId] = useState(null);
   
-  const navigate = (page) => {
+  const navigate = (page, productId = null) => {
     setCurrentPage(page);
+    setCurrentProductId(productId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -16,7 +18,7 @@ function App() {
     <div className="app">
       {currentPage === 'home' && <HomePage onNavigate={navigate} />}
       {currentPage === 'about' && <AboutPage onNavigate={navigate} />}
-      {currentPage === 'product' && <ProductPage onNavigate={navigate} />}
+      {currentPage === 'product' && <ProductPage onNavigate={navigate} productId={currentProductId} />}
     </div>
   );
 }
