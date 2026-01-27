@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import SocialIcons from '../ui/SocialIcons';
 import { SITE_NAME, SITE_SLOGAN } from '../../config/constants';
 import colors from '../../config/colors';
 
-export default function Footer({ onNavigate }) {
+export default function Footer() {
+  const navigate = useNavigate();
+
   return (
     <footer className="border-t border-gray-800 pt-12 pb-8 text-center bg-black">
       <div className="container mx-auto px-6">
@@ -20,7 +23,7 @@ export default function Footer({ onNavigate }) {
           
           <div className="flex justify-center gap-6 text-sm text-gray-400">
             <button 
-              onClick={() => onNavigate('about')}
+              onClick={() => navigate('/about')}
               className="hover:text-orange-500 transition-colors"
             >
               À propos

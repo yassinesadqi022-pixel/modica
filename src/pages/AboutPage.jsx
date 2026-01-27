@@ -1,7 +1,10 @@
-import { SITE_NAME, SITE_SLOGAN, MESSAGES } from '../config/constants';
+import { useNavigate } from 'react-router-dom';
+import { SITE_NAME, MESSAGES } from '../config/constants';
 import colors from '../config/colors';
 
-export default function AboutPage({ onNavigate }) {
+export default function AboutPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center px-6">
       <div className="max-w-3xl text-center animate-fadeIn">
@@ -32,7 +35,7 @@ export default function AboutPage({ onNavigate }) {
         </p>
         
         <button 
-          onClick={() => onNavigate('home')}
+          onClick={() => navigate('/')}
           className="inline-block px-6 py-3 text-white border-2 rounded-full hover:bg-white hover:text-black transition-all duration-300"
           style={{ borderColor: colors.orangeRoyal }}
         >

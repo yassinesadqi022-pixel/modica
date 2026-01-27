@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ShoppingBag } from 'lucide-react';
 import GlowEffect from '../components/ui/GlowEffect';
 import ProductCard from '../components/product/ProductCard';
@@ -8,7 +9,8 @@ import { SITE_NAME, SITE_SLOGAN } from '../config/constants';
 import { getAllProducts } from '../data/products';
 import colors from '../config/colors';
 
-export default function HomePage({ onNavigate }) {
+export default function HomePage() {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [products, setProducts] = useState([]);
 
@@ -18,7 +20,8 @@ export default function HomePage({ onNavigate }) {
   }, []);
 
   const handleViewDetails = (productId) => {
-    onNavigate('product', productId);
+    // Navigation vers /products/tshirt-001
+    navigate(`/products/${productId}`);
   };
 
   const handleAddToCart = (product) => {
@@ -27,7 +30,7 @@ export default function HomePage({ onNavigate }) {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <Header onNavigate={onNavigate} />
+      <Header />
 
       {/* Hero Section */}
       <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center overflow-hidden">
@@ -126,7 +129,7 @@ export default function HomePage({ onNavigate }) {
         </div>
       </section>
 
-      <Footer onNavigate={onNavigate} />
+      <Footer />
     </div>
   );
 }

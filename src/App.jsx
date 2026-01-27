@@ -1,24 +1,30 @@
-import { useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProductPage from './pages/ProductPage';
+import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [currentProductId, setCurrentProductId] = useState(null);
-  
-  const navigate = (page, productId = null) => {
-    setCurrentPage(page);
-    setCurrentProductId(productId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <div className="app">
-      {currentPage === 'home' && <HomePage onNavigate={navigate} />}
-      {currentPage === 'about' && <AboutPage onNavigate={navigate} />}
-      {currentPage === 'product' && <ProductPage onNavigate={navigate} productId={currentProductId} />}
+      <Routes>
+        {/* Page d'accueil */}
+        <Route path="/" element={<HomePage />} />
+        
+        {/* Page À propos */}
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/qui-sommes-nous" element={<AboutPage />} />
+        
+        {/* Page produit avec ID dynamique */}
+        <Route path="/products/:productId" element={<ProductPage />} />
+        
+        {/* Redirection ancienne route */}
+        <Route path="/product/:productId" element={<Navigate to="/products/:productId" replace />} />
+        
+        {/* Page 404 */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 }
