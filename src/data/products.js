@@ -10,14 +10,6 @@ export const products = {
     inStock: true,
     variants: [
       {
-        id: 'var-001',
-        color: '#adadad',
-        colorName: 'GRIS',
-        images: [
-          'https://cdn.media-affs.online/chic/product_photos/1757760852_3%20(1).png',
-        ]
-      },
-      {
         id: 'var-002',
         color: '#8E0000',
         colorName: 'Grona',
@@ -25,6 +17,14 @@ export const products = {
           'https://cdn.media-affs.online/chic/product_photos/1757760852_IMG_20250830_000504_838.jpg',
           'https://cdn.media-affs.online/chic/product_photos/1757760852_IMG_20250830_000505_311.jpg',
           'https://cdn.media-affs.online/chic/product_photos/1757760852_1%20(1).png'
+        ]
+      },
+      {
+        id: 'var-001',
+        color: '#adadad',
+        colorName: 'GRIS',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_3%20(1).png',
         ]
       },
       {
