@@ -1,7 +1,7 @@
 // Base de données des produits (Mock Data)
 export const products = {
-  'Srwal over': {
-    id: 1,
+  'Srwal_over': {
+    id: 'Srwal_over',
     name: 'Srwal over',
     description: 'مونطوني بجودة عالية ✨ مناسب للكاجوال و الستريت ستايل✨ سروال أوفر توب مونطوني ✨ ستايل واسع، راحة وأناقة فـ نفس الوقت ? ثوب',
     oldPrice: 199,
