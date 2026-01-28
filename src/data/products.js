@@ -1,27 +1,27 @@
 // Base de données des produits (Mock Data)
 export const products = {
-  'tshirt-001': {
-    id: 'tshirt-001',
-    name: 'T-Shirt Signature MODICA',
-    description: 'T-shirt premium en coton biologique, design urbain exclusif. Coupe moderne et confortable pour un style unique.',
-    oldPrice: 599,
-    price: 399,
-    discount: 33,
+  'Srwal over': {
+    id: 1,
+    name: 'Srwal over',
+    description: 'مونطوني بجودة عالية ✨ مناسب للكاجوال و الستريت ستايل✨ سروال أوفر توب مونطوني ✨ ستايل واسع، راحة وأناقة فـ نفس الوقت ? ثوب',
+    oldPrice: 199,
+    price: 159,
+    discount: 20,
     inStock: true,
     variants: [
       {
         id: 'var-001',
-        color: '#FF6B35',
-        colorName: 'Orange Royal',
+        color: '#adadad',
+        colorName: 'GRIS',
         images: [
-          'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800',
-          'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800',
-          'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800'
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_IMG_20250830_000504_838.jpg',
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_IMG_20250830_000504_838.jpg',
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_IMG_20250830_000504_838.jpg'
         ]
       },
       {
         id: 'var-002',
-        color: '#1A1A1A',
+        color: '#FFFF00',
         colorName: 'Noir Profond',
         images: [
           'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=800',
