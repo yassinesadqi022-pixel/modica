@@ -14,39 +14,77 @@ export const products = {
         color: '#adadad',
         colorName: 'GRIS',
         images: [
-          'https://cdn.media-affs.online/chic/product_photos/1757760852_IMG_20250830_000504_838.jpg',
-          'https://cdn.media-affs.online/chic/product_photos/1757760852_IMG_20250830_000504_838.jpg',
-          'https://cdn.media-affs.online/chic/product_photos/1757760852_IMG_20250830_000504_838.jpg'
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_3%20(1).png',
         ]
       },
       {
         id: 'var-002',
-        color: '#FFFF00',
-        colorName: 'Noir Profond',
+        color: '#8E0000',
+        colorName: 'Grona',
         images: [
-          'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=800',
-          'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800',
-          'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800'
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_IMG_20250830_000504_838.jpg',
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_IMG_20250830_000505_311.jpg',
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_1%20(1).png'
         ]
       },
       {
         id: 'var-003',
-        color: '#F5F5F5',
-        colorName: 'Blanc Cassé',
+        color: '#ffffff',
+        colorName: 'Blanc ',
         images: [
-          'https://images.unsplash.com/photo-1622445275576-721325763afe?w=800',
-          'https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=800',
-          'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800'
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_7%20(1).png',
+          
+        ]
+      }
+      ,
+      {
+        id: 'var-004',
+        color: '#144F1C',
+        colorName: 'Vert foncé ',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_6%20(1).png',
+          
+        ]
+      }
+      ,
+      {
+        id: 'var-005',
+        color: '#FFFF00',
+        colorName: 'Jaune',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_2%20(1).png',
+          
+        ]
+      }
+      ,
+      {
+        id: 'var-006',
+        color: '#4AE1FF',
+        colorName: 'Bleu ciel',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_5%20(1).png',
+          
+        ]
+      }
+      ,
+      {
+        id: 'var-007',
+        color: '#0000',
+        colorName: 'Noir',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1757760852_4%20(1).png',
+          
         ]
       }
     ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    sizes: ['L', 'XL', '2XL', '3XL', 'M','4XL'],
     sizesAvailability: {
-      'S': true,
-      'M': true,
       'L': true,
       'XL': true,
-      'XXL': false
+      '2XL': true,
+      '3XL': true,
+      'M': true,
+      '4XL': true,
     }
   },
 
