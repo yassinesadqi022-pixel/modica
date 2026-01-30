@@ -105,15 +105,7 @@ export const products = {
           'https://cdn.media-affs.online/chic/product_photos/1759094887_IMG-20250928-WA0117.jpg',
         ]
       },
-      {
-        id: 'var-005',
-        color: '#8E0000',
-        colorName: 'Grona',
-        images: [
-'https://cdn.media-affs.online/chic/product_photos/1759094887_IMG-20250928-WA0100.jpg'
-        ]
-      },
-      {
+       {
         id: 'var-005',
         color: '#8E0000',
         colorName: 'Grona',
