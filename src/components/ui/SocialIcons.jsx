@@ -1,12 +1,12 @@
-import { Instagram, Facebook, Twitter } from 'lucide-react';
+import { Instagram, Facebook, MailOpen } from 'lucide-react';
 import { SOCIAL_LINKS } from '../../config/constants';
 import colors from '../../config/colors';
 
 export default function SocialIcons() {
   const socials = [
     { Icon: Instagram, href: "https://www.instagram.com/modica_store/", label: 'Instagram' },
-    { Icon: Facebook, href: SOCIAL_LINKS.facebook, label: 'Facebook' },
-    { Icon: Twitter, href: SOCIAL_LINKS.twitter, label: 'Twitter' }
+    { Icon: Facebook, href:"https://www.facebook.com/profile.php?id=61558393306859", label: 'Facebook' },
+    { Icon: MailOpen , href:  "mailto:modicamarket71@gmail.com", label: 'Mail' }
   ];
 
   return (

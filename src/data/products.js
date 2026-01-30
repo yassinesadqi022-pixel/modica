@@ -88,40 +88,71 @@ export const products = {
     }
   },
 
-  'tshirt-002': {
-    id: 'tshirt-002',
-    name: 'T-Shirt Urban Style',
-    description: 'T-shirt streetwear avec design avant-gardiste. Pour ceux qui osent se démarquer.',
-    oldPrice: 499,
-    price: 349,
-    discount: 30,
+  'Survet snsla': {
+    id: 'Survet snsla',
+    name: 'Survet snsla',
+    description: 'سورفيت مونطوني تركيا',
+    oldPrice: 299,
+    price: 249.00 ,
+    discount: 1,
     inStock: true,
     variants: [
       {
         id: 'var-004',
-        color: '#1A1A1A',
-        colorName: 'Noir',
+        color: '#5B86FF',
+        colorName: 'Blue',
         images: [
-          'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=800',
-          'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800'
+          'https://cdn.media-affs.online/chic/product_photos/1759094887_IMG-20250928-WA0117.jpg',
         ]
       },
       {
         id: 'var-005',
-        color: '#FF6B35',
-        colorName: 'Orange',
+        color: '#8E0000',
+        colorName: 'Grona',
         images: [
-          'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800',
-          'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800'
+'https://cdn.media-affs.online/chic/product_photos/1759094887_IMG-20250928-WA0100.jpg'
+        ]
+      },
+      {
+        id: 'var-005',
+        color: '#8E0000',
+        colorName: 'Grona',
+        images: [
+'https://cdn.media-affs.online/chic/product_photos/1759094887_IMG-20250928-WA0100.jpg'
+        ]
+      },
+      {
+        id: 'var-005',
+        color: '#0000',
+        colorName: 'Noir  ',
+        images: [
+'https://cdn.media-affs.online/chic/product_photos/1759162701_IMG_20250929_171741_249.jpg'
+        ]
+      },
+      {
+        id: 'var-005',
+        color: '#ADADAD',
+        colorName: 'Gris',
+        images: [
+'https://cdn.media-affs.online/chic/product_photos/1759094887_IMG-20250928-WA0111.jpg'
+        ]
+      },
+      {
+        id: 'var-005',
+        color: '#8f4526',
+        colorName: 'Marron',
+        images: [
+'https://cdn.media-affs.online/chic/product_photos/1759094887_IMG-20250928-WA0103.jpg'
         ]
       }
     ],
-    sizes: ['S', 'M', 'L', 'XL'],
+    sizes: ['L', 'M', 'XL', '2XL','3XL'],
     sizesAvailability: {
-      'S': true,
+      '2xl': true,
       'M': true,
       'L': true,
-      'XL': true
+      'XL': true,
+      '3XL': true
     }
   },
 
