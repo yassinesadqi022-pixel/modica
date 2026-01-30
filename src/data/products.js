@@ -151,7 +151,7 @@ export const products = {
   'جلابة سبور': {
     id: 'جلابة سبور',
     name: 'جلابة سبور',
-    description: 'Design minimaliste et élégant. La simplicité au service du style.',
+    description: 'جلابة سبور   بحلة جديدة للمحتجبات والغير المحتجبات للخروج والمناسبات متوفرة بعدة ألوان زاهية نوع التوب مونطوني تركيا',
     oldPrice: 300,
     price: 230,
     discount: 23,
