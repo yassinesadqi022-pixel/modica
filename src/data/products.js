@@ -148,22 +148,22 @@ export const products = {
     }
   },
 
-  'tshirt-003': {
-    id: 'tshirt-003',
-    name: 'T-Shirt Minimal Edition',
+  'جلابة سبور': {
+    id: 'جلابة سبور',
+    name: 'جلابة سبور',
     description: 'Design minimaliste et élégant. La simplicité au service du style.',
-    oldPrice: 449,
-    price: 299,
-    discount: 33,
+    oldPrice: 300,
+    price: 230,
+    discount: 23,
     inStock: true,
     variants: [
       {
         id: 'var-006',
-        color: '#F5F5F5',
-        colorName: 'Blanc',
+        color: '#fd86e2',
+        colorName: 'Rose',
         images: [
-          'https://images.unsplash.com/photo-1622445275576-721325763afe?w=800',
-          'https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=800'
+          'https://cdn.media-affs.online/chic/product_photos/1730566736_3.png',
+         
         ]
       },
       {
@@ -171,8 +171,17 @@ export const products = {
         color: '#718096',
         colorName: 'Gris',
         images: [
-          'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800',
-          'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800'
+          'https://cdn.media-affs.online/chic/product_photos/1730566736_1.png',
+         
+        ]
+      },
+      {
+        id: 'var-007',
+        color: '#b80223',
+        colorName: 'Grona',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1734780571_IMG_20241221_122905_457.jpg',
+         
         ]
       }
     ],
@@ -186,43 +195,7 @@ export const products = {
     }
   },
 
-  'hoodie-001': {
-    id: 'hoodie-001',
-    name: 'Hoodie Premium MODICA',
-    description: 'Sweat à capuche premium, doux et confortable. Parfait pour toutes les saisons.',
-    oldPrice: 899,
-    price: 699,
-    discount: 22,
-    inStock: false,
-    variants: [
-      {
-        id: 'var-008',
-        color: '#1A1A1A',
-        colorName: 'Noir',
-        images: [
-          'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800',
-          'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800'
-        ]
-      },
-      {
-        id: 'var-009',
-        color: '#FF6B35',
-        colorName: 'Orange',
-        images: [
-          'https://images.unsplash.com/photo-1620799139834-6b8f844fbe61?w=800',
-          'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800'
-        ]
-      }
-    ],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    sizesAvailability: {
-      'S': false,
-      'M': false,
-      'L': false,
-      'XL': false,
-      'XXL': false
-    }
-  }
+  
 };
 
 // Fonctions utilitaires
