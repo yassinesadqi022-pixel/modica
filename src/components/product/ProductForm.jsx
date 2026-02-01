@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import Input from '../ui/Input';
 import { CURRENCY, MESSAGES } from '../../config/constants';
+import { processOrder } from '../../orderService';
 import colors from '../../config/colors';
 
 export default function ProductForm({ product, selectedSize, selectedVariant }) {
@@ -13,6 +14,7 @@ export default function ProductForm({ product, selectedSize, selectedVariant }) 
   
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
   const validateForm = () => {
     const newErrors = {};
@@ -33,19 +35,58 @@ export default function ProductForm({ product, selectedSize, selectedVariant }) 
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!validateForm()) return;
+    console.log('🔵 Bouton Commander cliqué');
+    
+    // Validation du formulaire
+    if (!validateForm()) {
+      alert('❌ Veuillez corriger les erreurs dans le formulaire');
+      return;
+    }
     
     setIsSubmitting(true);
+    setSubmitStatus(null);
     
-    // Simulation d'envoi
-    setTimeout(() => {
-      alert(`${MESSAGES.orderSuccess}
+    try {
+      console.log('📤 Préparation de la commande...');
+      
+      // Préparer les détails de la commande
+      const orderDetails = {
+        product: {
+          id: product.id,
+          name: product.name,
+          price: product.price
+        },
+        selectedVariant: {
+          colorName: selectedVariant.colorName
+        },
+        selectedSize: selectedSize,
+        formData: {
+          name: formData.name,
+          address: formData.address,
+          phone: formData.phone
+        }
+      };
 
-📦 Détails de la commande:
+      console.log('📦 Détails de la commande:', orderDetails);
+
+      // Appeler le service de traitement de commande
+      console.log('🚀 Appel de processOrder...');
+      const result = await processOrder(orderDetails);
+
+      console.log('📨 Résultat de processOrder:', result);
+
+      if (result.success) {
+        // Succès
+        setSubmitStatus('success');
+        
+        alert(`✅ ${MESSAGES.orderSuccess}
+
+📦 Détails de votre commande:
 ━━━━━━━━━━━━━━━━━━━━━━━━
+🔖 Code: ${result.orderCode}
 🎨 Produit: ${product.name}
 🌈 Couleur: ${selectedVariant.colorName}
 📏 Taille: ${selectedSize}
@@ -57,11 +98,46 @@ export default function ProductForm({ product, selectedSize, selectedVariant }) 
 📍 Adresse: ${formData.address}
 📱 Téléphone: ${formData.phone}
 
-Nous vous contacterons bientôt pour confirmer votre commande !`);
+✉️ Un email de confirmation a été envoyé.
+📊 Votre commande a été enregistrée.
+Nous vous contacterons bientôt !`);
+        
+        // Réinitialiser le formulaire
+        setFormData({ name: '', address: '', phone: '' });
+        setErrors({});
+        
+      } else {
+        // Erreur
+        setSubmitStatus('error');
+        console.error('❌ Erreur lors du traitement:', result);
+        
+        let errorMessage = result.message || 'Erreur inconnue';
+        
+        if (result.errors) {
+          errorMessage += '\n\nDétails:';
+          if (result.errors.email) {
+            errorMessage += `\n📧 Email: ${result.errors.email}`;
+          }
+          if (result.errors.sheet) {
+            errorMessage += `\n📊 Google Sheet: ${result.errors.sheet}`;
+          }
+        }
+        
+        alert(`❌ Erreur lors de l'enregistrement de la commande\n\n${errorMessage}\n\nVeuillez réessayer ou nous contacter directement.`);
+      }
       
-      setFormData({ name: '', address: '', phone: '' });
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error('❌ Erreur inattendue:', error);
+      alert(`❌ ${MESSAGES.orderError}\n\nErreur: ${error.message}\n\nVeuillez vérifier votre connexion internet et réessayer.`);
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+      
+      // Réinitialiser le statut après 3 secondes
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 3000);
+    }
   };
 
   return (
@@ -77,6 +153,7 @@ Nous vous contacterons bientôt pour confirmer votre commande !`);
         value={formData.name}
         onChange={(e) => setFormData({...formData, name: e.target.value})}
         error={errors.name}
+        disabled={isSubmitting}
       />
       
       <Input
@@ -85,6 +162,7 @@ Nous vous contacterons bientôt pour confirmer votre commande !`);
         value={formData.address}
         onChange={(e) => setFormData({...formData, address: e.target.value})}
         error={errors.address}
+        disabled={isSubmitting}
       />
       
       <Input
@@ -93,6 +171,7 @@ Nous vous contacterons bientôt pour confirmer votre commande !`);
         value={formData.phone}
         onChange={(e) => setFormData({...formData, phone: e.target.value})}
         error={errors.phone}
+        disabled={isSubmitting}
       />
       
       <button
@@ -100,12 +179,35 @@ Nous vous contacterons bientôt pour confirmer votre commande !`);
         disabled={isSubmitting}
         className="w-full py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
         style={{ 
-          background: `linear-gradient(135deg, ${colors.orangeRoyal}, ${colors.orangeLight})`,
+          background: submitStatus === 'success' 
+            ? 'linear-gradient(135deg, #10B981, #059669)' 
+            : submitStatus === 'error'
+              ? 'linear-gradient(135deg, #EF4444, #DC2626)'
+              : `linear-gradient(135deg, ${colors.orangeRoyal}, ${colors.orangeLight})`,
           boxShadow: `0 10px 30px rgba(255, 107, 53, 0.4)`
         }}
       >
-        <ShoppingCart className="w-6 h-6" />
-        {isSubmitting ? 'Envoi en cours...' : `Commander - ${product.price} ${CURRENCY}`}
+        {isSubmitting ? (
+          <>
+            <Loader2 className="w-6 h-6 animate-spin" />
+            Envoi en cours...
+          </>
+        ) : submitStatus === 'success' ? (
+          <>
+            <CheckCircle className="w-6 h-6" />
+            Commande envoyée !
+          </>
+        ) : submitStatus === 'error' ? (
+          <>
+            <AlertCircle className="w-6 h-6" />
+            Erreur - Réessayer
+          </>
+        ) : (
+          <>
+            <ShoppingCart className="w-6 h-6" />
+            Commander - {product.price} {CURRENCY}
+          </>
+        )}
       </button>
 
       <p className="text-xs text-gray-500 text-center mt-4">
