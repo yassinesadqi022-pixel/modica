@@ -194,6 +194,72 @@ export const products = {
       'XXL': false
     }
   },
+  'Abaya': {
+    id: 'Abaya',
+    name: 'Abaya',
+    description: 'طقم للصلاة من قطعتين عباية مع فولار مخيط معاها متوفرة بعدة ألوان زاهية توب : كريب روزا 150 في الكراماج',
+    oldPrice: 300,
+    price: 229,
+    discount: 23,
+    inStock: true,
+    variants: [
+      {
+        id: 'var-006',
+        color: '#fffdf1',
+        colorName: 'Blanc cassé',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1767966780_1000535222.jpg',
+         
+        ]
+      },
+      {
+        id: 'var-007',
+        color: '#0000',
+        colorName: 'Black',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1767966905_1000535295.jpg',
+         
+        ]
+      },
+      {
+        id: 'var-007',
+        color: '#b80223',
+        colorName: 'Grona',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1767966905_1000535241.jpg',
+         
+        ]
+      }
+      ,
+      {
+        id: 'var-007',
+        color: '#4236f3',
+        colorName: 'Bleu',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1767966904_1000535244.jpg',
+         
+        ]
+      }
+      ,
+      {
+        id: 'var-007',
+        color: '#e08319',
+        colorName: 'Marron',
+        images: [
+          'https://cdn.media-affs.online/chic/product_photos/1767966905_1000535296.jpg',
+         
+        ]
+      }
+    ],
+    sizes: ['L', 'XL', '2XL', '3XL', 'M'],
+    sizesAvailability: {
+      'L': true,
+      'XL': true,
+      '2XL': true,
+      '3XL': true,
+      'M': true
+    }
+  },
 
   
 };
