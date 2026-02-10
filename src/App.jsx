@@ -4,8 +4,10 @@ import AboutPage from './pages/AboutPage';
 import ProductPage from './pages/ProductPage';
 import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
+import useMetaPixel from './hooks/useMetaPixel';
 
 function App() {
+  useMetaPixel();
   return (
     <div className="app">
       <Routes>
