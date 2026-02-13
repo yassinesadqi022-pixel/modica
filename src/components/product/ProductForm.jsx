@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ShoppingCart, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import ReactPixel from 'react-facebook-pixel'; // ← AJOUTER
 import Input from '../ui/Input';
 import { CURRENCY, MESSAGES } from '../../config/constants';
 import { processOrder } from '../../orderService';
@@ -14,7 +15,7 @@ export default function ProductForm({ product, selectedSize, selectedVariant }) 
   
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const validateForm = () => {
     const newErrors = {};
@@ -39,6 +40,20 @@ export default function ProductForm({ product, selectedSize, selectedVariant }) 
     e.preventDefault();
     
     console.log('🔵 Bouton Commander cliqué');
+    
+    // ✅ PIXEL: Track InitiateCheckout (début de commande)
+    ReactPixel.track('InitiateCheckout', {
+      content_name: product.name,
+      content_category: 'Produit',
+      content_ids: [product.id],
+      contents: [{
+        id: product.id,
+        quantity: 1,
+        item_price: product.price
+      }],
+      currency: 'MAD',
+      value: product.price
+    });
     
     // Validation du formulaire
     if (!validateForm()) {
@@ -79,6 +94,31 @@ export default function ProductForm({ product, selectedSize, selectedVariant }) 
       console.log('📨 Résultat de processOrder:', result);
 
       if (result.success) {
+        // ✅ PIXEL: Track Purchase (conversion réussie)
+        ReactPixel.track('Purchase', {
+          content_name: product.name,
+          content_type: 'product',
+          content_ids: [product.id],
+          contents: [{
+            id: product.id,
+            quantity: 1,
+            item_price: product.price
+          }],
+          currency: 'MAD',
+          value: product.price,
+          // Informations additionnelles
+          order_id: result.orderCode,
+          delivery_category: 'home_delivery'
+        });
+
+        // ✅ PIXEL: Track Lead (prospect qualifié)
+        ReactPixel.track('Lead', {
+          content_name: product.name,
+          content_category: 'Commande validée',
+          value: product.price,
+          currency: 'MAD'
+        });
+        
         // Succès
         setSubmitStatus('success');
         
@@ -140,6 +180,22 @@ Nous vous contacterons bientôt !`);
     }
   };
 
+  // ✅ BONUS: Tracker quand l'utilisateur commence à remplir le formulaire
+  const handleInputChange = (field, value) => {
+    // Si c'est la première interaction avec le formulaire
+    if (!formData.name && !formData.address && !formData.phone) {
+      ReactPixel.track('AddToCart', {
+        content_name: product.name,
+        content_ids: [product.id],
+        content_type: 'product',
+        value: product.price,
+        currency: 'MAD'
+      });
+    }
+    
+    setFormData({...formData, [field]: value});
+  };
+
   return (
     <div 
       className="space-y-4 p-6 rounded-2xl" 
@@ -151,7 +207,7 @@ Nous vous contacterons bientôt !`);
         type="text"
         placeholder="Nom complet *"
         value={formData.name}
-        onChange={(e) => setFormData({...formData, name: e.target.value})}
+        onChange={(e) => handleInputChange('name', e.target.value)} 
         error={errors.name}
         disabled={isSubmitting}
       />
@@ -160,7 +216,7 @@ Nous vous contacterons bientôt !`);
         type="text"
         placeholder="Adresse de livraison *"
         value={formData.address}
-        onChange={(e) => setFormData({...formData, address: e.target.value})}
+        onChange={(e) => handleInputChange('address', e.target.value)} 
         error={errors.address}
         disabled={isSubmitting}
       />
@@ -169,7 +225,7 @@ Nous vous contacterons bientôt !`);
         type="tel"
         placeholder="Téléphone (06XXXXXXXX) *"
         value={formData.phone}
-        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+        onChange={(e) => handleInputChange('phone', e.target.value)} 
         error={errors.phone}
         disabled={isSubmitting}
       />

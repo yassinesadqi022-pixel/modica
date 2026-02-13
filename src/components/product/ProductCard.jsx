@@ -1,14 +1,20 @@
-import { Eye, ShoppingCart } from 'lucide-react';
+import { Eye } from 'lucide-react';
 import colors from '../../config/colors';
 import { CURRENCY } from '../../config/constants';
 
-export default function ProductCard({ product, onViewDetails, onAddToCart }) {
+export default function ProductCard({ product, onViewDetails }) {
   const firstVariant = product.variants[0];
   const discount = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
 
+  // Fonction pour gérer le clic sur la carte
+  const handleCardClick = () => {
+    onViewDetails(product.id);
+  };
+
   return (
     <div 
-      className="group relative bg-gray-900 rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+      onClick={handleCardClick}
+      className="group relative bg-gray-900 rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer"
       style={{ boxShadow: '0 10px 40px rgba(0,0,0,0.5)' }}
     >
       {/* Badge promo */}
@@ -37,28 +43,19 @@ export default function ProductCard({ product, onViewDetails, onAddToCart }) {
         />
         
         {/* Overlay au hover */}
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           {/* Bouton Voir détails */}
           <button
-            onClick={() => onViewDetails(product.id)}
+            onClick={(e) => {
+              e.stopPropagation(); // Empêcher la propagation du clic
+              onViewDetails(product.id);
+            }}
             className="p-3 bg-white rounded-full transition-all duration-300 hover:scale-110"
             style={{ color: colors.noir }}
             aria-label="Voir les détails"
           >
             <Eye className="w-6 h-6" />
           </button>
-
-          {/* Bouton Ajouter au panier */}
-          {product.inStock && (
-            <button
-              onClick={() => onAddToCart(product)}
-              className="p-3 rounded-full transition-all duration-300 hover:scale-110"
-              style={{ backgroundColor: colors.orangeRoyal }}
-              aria-label="Ajouter au panier"
-            >
-              <ShoppingCart className="w-6 h-6 text-white" />
-            </button>
-          )}
         </div>
       </div>
 
@@ -92,7 +89,7 @@ export default function ProductCard({ product, onViewDetails, onAddToCart }) {
         </div>
 
         {/* Prix */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-baseline gap-2">
             <span 
               className="text-2xl font-bold" 
@@ -108,28 +105,18 @@ export default function ProductCard({ product, onViewDetails, onAddToCart }) {
           </div>
         </div>
 
-        {/* Boutons mobiles (visibles tout le temps sur mobile) */}
-        <div className="mt-4 flex gap-2 md:hidden">
-          <button
-            onClick={() => onViewDetails(product.id)}
-            className="flex-1 py-2 px-4 border-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
-            style={{ borderColor: colors.orangeRoyal, color: colors.orangeRoyal }}
-          >
-            <Eye className="w-4 h-4 inline mr-2" />
-            Détails
-          </button>
-          
-          {product.inStock && (
-            <button
-              onClick={() => onAddToCart(product)}
-              className="flex-1 py-2 px-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-white"
-              style={{ backgroundColor: colors.orangeRoyal }}
-            >
-              <ShoppingCart className="w-4 h-4 inline mr-2" />
-              Ajouter
-            </button>
-          )}
-        </div>
+        {/* Bouton Voir détails (toujours visible) */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation(); // Empêcher la propagation du clic
+            onViewDetails(product.id);
+          }}
+          className="w-full py-3 px-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-white flex items-center justify-center gap-2"
+          style={{ backgroundColor: colors.orangeRoyal }}
+        >
+          <Eye className="w-5 h-5" />
+          Voir les détails
+        </button>
       </div>
     </div>
   );

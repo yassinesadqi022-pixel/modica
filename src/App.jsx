@@ -4,10 +4,13 @@ import AboutPage from './pages/AboutPage';
 import ProductPage from './pages/ProductPage';
 import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
-import useMetaPixel from './hooks/useMetaPixel';
-
+import ReactPixel from 'react-facebook-pixel';
+import { useEffect } from 'react';
 function App() {
-  useMetaPixel();
+  useEffect(() => {
+    ReactPixel.init('1665437894426265');
+    ReactPixel.pageView();
+  }, []);
   return (
     <div className="app">
       <Routes>

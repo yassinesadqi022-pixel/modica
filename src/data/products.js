@@ -199,8 +199,8 @@ export const products = {
     name: 'Abaya',
     description: 'طقم للصلاة من قطعتين عباية مع فولار مخيط معاها متوفرة بعدة ألوان زاهية توب : كريب روزا 150 في الكراماج',
     oldPrice: 300,
-    price: 229,
-    discount: 23,
+    price: 199,
+    discount: 33,
     inStock: true,
     variants: [
       {
@@ -246,7 +246,7 @@ export const products = {
         color: '#e08319',
         colorName: 'Marron',
         images: [
-          'https://cdn.media-affs.online/chic/product_photos/1767966905_1000535296.jpg',
+          'https://cdn.media-affs.online/chic/product_photos/1767966906_1000535246.jpg',
          
         ]
       }
