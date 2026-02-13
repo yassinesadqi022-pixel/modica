@@ -1,4 +1,3 @@
-import { Eye } from 'lucide-react';
 import colors from '../../config/colors';
 import { CURRENCY } from '../../config/constants';
 
@@ -42,21 +41,8 @@ export default function ProductCard({ product, onViewDetails }) {
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         
-        {/* Overlay au hover */}
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          {/* Bouton Voir détails */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation(); // Empêcher la propagation du clic
-              onViewDetails(product.id);
-            }}
-            className="p-3 bg-white rounded-full transition-all duration-300 hover:scale-110"
-            style={{ color: colors.noir }}
-            aria-label="Voir les détails"
-          >
-            <Eye className="w-6 h-6" />
-          </button>
-        </div>
+        {/* Overlay au hover - optionnel pour effet visuel */}
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* Infos produit */}
@@ -89,7 +75,7 @@ export default function ProductCard({ product, onViewDetails }) {
         </div>
 
         {/* Prix */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between">
           <div className="flex items-baseline gap-2">
             <span 
               className="text-2xl font-bold" 
@@ -104,19 +90,6 @@ export default function ProductCard({ product, onViewDetails }) {
             )}
           </div>
         </div>
-
-        {/* Bouton Voir détails (toujours visible) */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation(); // Empêcher la propagation du clic
-            onViewDetails(product.id);
-          }}
-          className="w-full py-3 px-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-white flex items-center justify-center gap-2"
-          style={{ backgroundColor: colors.orangeRoyal }}
-        >
-          <Eye className="w-5 h-5" />
-          Voir les détails
-        </button>
       </div>
     </div>
   );
