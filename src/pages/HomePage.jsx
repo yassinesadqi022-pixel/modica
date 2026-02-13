@@ -33,7 +33,7 @@ export default function HomePage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[70vh]  flex items-center justify-center overflow-hidden">
         <GlowEffect />
         
         <div className={`text-center z-10 px-6 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
