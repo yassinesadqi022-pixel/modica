@@ -217,7 +217,7 @@ export const products = {
         color: '#0000',
         colorName: 'Black',
         images: [
-          'https://cdn.media-affs.online/chic/product_photos/1767966905_1000535295.jpg',
+          'https://cdn.media-affs.online/chic/product_photos/1767966908_1000535248.jpg',
          
         ]
       },
