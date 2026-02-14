@@ -246,6 +246,15 @@ export const products = {
         color: '#e08319',
         colorName: 'Marron',
         images: [
+          'https://cdn.media-affs.online/chic/product_photos/1767966907_1000535294.jpg',
+         
+        ]
+      },
+      {
+        id: 'var-007',
+        color: '#ffd7aa',
+        colorName: 'Cramel',
+        images: [
           'https://cdn.media-affs.online/chic/product_photos/1767966906_1000535246.jpg',
          
         ]
