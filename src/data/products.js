@@ -241,15 +241,7 @@ export const products = {
         ]
       }
       ,
-      {
-        id: 'var-007',
-        color: '#e08319',
-        colorName: 'Marron',
-        images: [
-          'https://cdn.media-affs.online/chic/product_photos/1767966907_1000535294.jpg',
-         
-        ]
-      },
+     
       {
         id: 'var-007',
         color: '#ffd7aa',
